@@ -1,0 +1,32 @@
+.footer {
+  padding: var(--sp-10) 0;
+  border-top: 1px solid var(--border);
+  background: linear-gradient(180deg, #f8fafc, var(--white));
+}
+.footer-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 28px;
+  text-align: center;
+}
+.footer-brand {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  background: var(--grad-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--sp-1);
+}
+.footer-credit {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin-bottom: var(--sp-4);
+}
+.footer-disclaimer {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.6;
+}

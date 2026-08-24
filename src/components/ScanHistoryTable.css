@@ -1,0 +1,62 @@
+.history-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 12px 16px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.history-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--grad-accent);
+}
+.history-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.history-table th {
+  text-align: left;
+  padding: 5px 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-bottom: 2px solid var(--border);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  user-select: none;
+}
+.history-table th:hover { color: var(--accent); }
+.history-table th.active { color: var(--accent); }
+.history-table td {
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text);
+}
+.history-table tr:last-child td { border-bottom: none; }
+.history-table tbody tr:hover td { background: #f0fdfa; }
+.hbadge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.hbadge-low { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+.hbadge-moderate { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
+.hbadge-high { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }

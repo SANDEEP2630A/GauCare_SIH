@@ -1,0 +1,100 @@
+.dashboard {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #f0fdfa 0%, var(--bg) 200px);
+  overflow: hidden;
+}
+
+/* ── Header ── */
+.dash-header {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.dash-header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 8px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.dash-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--text);
+  flex-shrink: 0;
+  margin-right: auto;
+}
+.dash-logo-mark {
+  width: 28px;
+  height: 28px;
+  background: var(--grad-accent);
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 10px;
+}
+.dash-logo-text { font-size: 14px; font-weight: 600; }
+.dash-offline {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--green-bg);
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  border: 1px solid var(--green-border);
+  flex-shrink: 0;
+}
+.dash-offline-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--green);
+  border-radius: 50%;
+  position: relative;
+}
+.dash-offline-dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: dashPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  opacity: 0.4;
+}
+@keyframes dashPing {
+  0% { transform: scale(1); opacity: 0.4; }
+  75%, 100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* ── Main grid ── */
+.dash-layout {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  padding: 14px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  min-height: 0;
+}
+.dash-left { display: flex; flex-direction: column; min-height: 0; }
+.dash-right { display: flex; flex-direction: column; gap: 14px; min-height: 0; }
+
+@media (max-width: 960px) {
+  .dash-layout { grid-template-columns: 1fr; overflow-y: auto; }
+  .dashboard { overflow: auto; }
+}
