@@ -46,5 +46,24 @@ class Scan(models.Model):
 
     def __str__(self):
         return f"{self.cow.cow_id} - Scan {self.scan_number}"
+class Prediction(models.Model):
+    scan = models.OneToOneField(
+        Scan,
+        on_delete=models.CASCADE,
+        related_name="prediction"
+    )
 
+    risk_score = models.FloatField()
+    risk_label = models.CharField(max_length=20)
+
+    model_version = models.CharField(
+        max_length=50,
+        blank=True,
+        null=True
+    )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.scan} - {self.risk_label}"
 # Create your models here.

@@ -14,3 +14,5 @@ venv/
 
 # SQLite database
 *.sqlite3
+# MastiSense dataset
+dataset/
