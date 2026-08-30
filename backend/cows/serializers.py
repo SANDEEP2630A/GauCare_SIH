@@ -103,3 +103,31 @@ class PredictionSerializer(serializers.ModelSerializer):
             "created_at",
         ]
         read_only_fields = ["id", "created_at"]
+class CowScanCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Scan
+        fields = [
+            "day",
+            "conductivity_raw_mScm",
+            "temperature_C",
+            "conductivity_temp_adjusted_mScm",
+            "milk_pH",
+            "somatic_cell_count",
+            "milk_yield_L",
+            "clotting",
+
+            "as7343_F1",
+            "as7343_F2",
+            "as7343_FZ",
+            "as7343_F3",
+            "as7343_F4",
+            "as7343_F5",
+            "as7343_FY",
+            "as7343_FXL",
+            "as7343_F6",
+            "as7343_F7",
+            "as7343_F8",
+            "as7343_NIR",
+            "as7343_VIS",
+            "as7343_FD",
+        ]
