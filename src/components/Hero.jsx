@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { getRiskClass, getRiskLabel } from '../data/mockCowData';
+import { CowFace, CowSilhouette } from './CowIcon';
 import './Hero.css';
 
 export default function Hero() {
@@ -11,28 +12,29 @@ export default function Hero() {
       <div className="hero-bg-orb hero-bg-orb-1" />
       <div className="hero-bg-orb hero-bg-orb-2" />
       <div className="hero-bg-orb hero-bg-orb-3" />
+      <CowSilhouette size={280} className="hero-cow-silhouette" />
       <div className="hero-inner">
         <div className="hero-content">
-          <div className="hero-badge">
-            <span className="hero-badge-dot" />
+          <div className="hero-badge" style={{ animationDelay: '0.1s' }}>
+            <CowFace size={14} />
             Built for Indian dairy farms
           </div>
-          <h1 className="hero-headline">
+          <h1 className="hero-headline" style={{ animationDelay: '0.2s' }}>
             Detect the risk<br />
             <span className="hero-headline-accent">before the symptoms.</span>
           </h1>
-          <p className="hero-sub">
+          <p className="hero-sub" style={{ animationDelay: '0.3s' }}>
             Portable, offline-first mastitis risk forecasting. Multimodal sensing
             meets explainable AI &mdash; no internet required, results in seconds.
           </p>
-          <div className="hero-actions">
+          <div className="hero-actions" style={{ animationDelay: '0.4s' }}>
             <Link to="/dashboard" className="hero-btn hero-btn-primary">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               View Live Dashboard
             </Link>
             <a href="#how-it-works" className="hero-btn hero-btn-ghost">How it works</a>
           </div>
-          <div className="hero-stats">
+          <div className="hero-stats" style={{ animationDelay: '0.5s' }}>
             <div className="hero-stat">
               <span className="hero-stat-num">3</span>
               <span className="hero-stat-label">Sensors combined</span>
@@ -49,7 +51,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-        <div className="hero-visual">
+        <div className="hero-visual" style={{ animationDelay: '0.3s' }}>
           <div className={`hero-card hero-card-${cls}`}>
             <div className="hero-card-shine" />
             <div className="hero-card-header">
@@ -60,7 +62,7 @@ export default function Hero() {
               </span>
             </div>
             <div className="hero-card-body">
-              <div className="hero-card-cow">Cow COW-027</div>
+              <div className="hero-card-cow"><CowFace size={14} /> Cow COW-027</div>
               <div className="hero-card-risk">
                 <span className={`hero-card-num hero-card-num-${cls}`}>{previewRisk}</span>
                 <span className="hero-card-pct">%</span>
@@ -81,7 +83,7 @@ export default function Hero() {
                 <div className="hero-card-factor-bar"><div className="hero-card-factor-fill hero-card-factor-fill-low" style={{ width: '12%' }} /></div>
               </div>
             </div>
-            <div className="hero-card-footer">7-day prediction window</div>
+            <div className="hero-card-footer"><CowFace size={12} /> 7-day prediction window</div>
           </div>
         </div>
       </div>

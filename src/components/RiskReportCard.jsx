@@ -1,3 +1,4 @@
+
 import './RiskReportCard.css';
 
 export default function RiskReportCard({ cowId, scan }) {

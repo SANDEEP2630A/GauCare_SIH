@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { getCows, getCowScans } from '../api';
+import { getCows, getCowScans, getLatestScan } from '../api';
 
 import CowSelector from '../components/CowSelector';
 import RiskReportCard from '../components/RiskReportCard';

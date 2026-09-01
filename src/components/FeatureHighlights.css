@@ -12,7 +12,9 @@
   margin-bottom: var(--sp-12);
 }
 .features-eyebrow {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: var(--text-xs);
   font-weight: 700;
   text-transform: uppercase;
@@ -23,20 +25,26 @@
   padding: 5px 14px;
   border-radius: var(--radius-pill);
   border: 1px solid var(--accent-border);
+  animation: badgePop 0.5s var(--ease-bounce) 0.2s both;
 }
+@keyframes badgePop { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+
 .features-heading {
   font-size: var(--text-3xl);
   font-weight: 800;
   line-height: 1.15;
   margin-bottom: var(--sp-4);
   color: var(--text);
+  animation: fadeUp 0.6s var(--ease) 0.3s both;
 }
 .features-sub {
   font-size: var(--text-lg);
   color: var(--text-sec);
   max-width: 480px;
   margin: 0 auto;
+  animation: fadeUp 0.6s var(--ease) 0.4s both;
 }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
 .features-grid {
   display: grid;
@@ -49,10 +57,11 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--sp-6) var(--sp-6) var(--sp-7);
-  transition: all 0.3s var(--ease);
-  animation: featureIn 0.5s var(--ease) both;
+  transition: all 0.35s var(--ease);
+  animation: featureIn 0.6s var(--ease) both;
   position: relative;
   overflow: hidden;
+  cursor: default;
 }
 .feature-card::before {
   content: '';
@@ -67,9 +76,24 @@
 .feature-card-violet::before { background: linear-gradient(135deg, #7c3aed, #a855f7); }
 .feature-card-rose::before { background: linear-gradient(135deg, #e11d48, #f43f5e); }
 
+.feature-card-glow {
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle at center, currentColor, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+.feature-card-teal .feature-card-glow { color: var(--feat-teal); }
+.feature-card-blue .feature-card-glow { color: var(--feat-blue); }
+.feature-card-violet .feature-card-glow { color: var(--feat-violet); }
+.feature-card-rose .feature-card-glow { color: var(--feat-rose); }
+.feature-card:hover .feature-card-glow { opacity: 0.03; }
+
 .feature-card:hover {
   box-shadow: var(--shadow-md);
-  transform: translateY(-4px);
+  transform: translateY(-6px);
 }
 .feature-card:hover::before { height: 4px; }
 
@@ -81,9 +105,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s var(--ease-bounce);
+  transition: transform 0.4s var(--ease-bounce), box-shadow 0.3s;
 }
-.feature-card:hover .feature-icon { transform: scale(1.08); }
+.feature-card:hover .feature-icon {
+  transform: scale(1.12) rotate(-3deg);
+  box-shadow: var(--shadow-sm);
+}
 
 .feature-icon-teal { background: var(--feat-teal-bg); color: var(--feat-teal); }
 .feature-icon-blue { background: var(--feat-blue-bg); color: var(--feat-blue); }
@@ -102,8 +129,23 @@
   line-height: 1.65;
 }
 
+.feature-card-arrow {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  font-size: 16px;
+  color: var(--text-muted);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: all 0.3s var(--ease);
+}
+.feature-card:hover .feature-card-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 @keyframes featureIn {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
