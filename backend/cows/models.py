@@ -54,7 +54,22 @@ class Prediction(models.Model):
     )
 
     risk_score = models.FloatField()
-    risk_label = models.CharField(max_length=20)
+
+    risk_label = models.CharField(
+        max_length=20
+    )
+
+    clinical_probability = models.FloatField(
+        default=0.0
+    )
+
+    healthy_probability = models.FloatField(
+        default=0.0
+    )
+
+    subclinical_probability = models.FloatField(
+        default=0.0
+    )
 
     model_version = models.CharField(
         max_length=50,
@@ -62,8 +77,9 @@ class Prediction(models.Model):
         null=True
     )
 
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
 
     def __str__(self):
         return f"{self.scan} - {self.risk_label}"
-# Create your models here.

@@ -7,7 +7,54 @@ class CowSerializer(serializers.ModelSerializer):
         model = Cow
         fields = ["id", "cow_id", "created_at"]
         read_only_fields = ["id", "created_at"]
+class PredictionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Prediction
+        fields = [
+            "id",
+            "scan",
+            "risk_score",
+            "risk_label",
+            "clinical_probability",
+            "healthy_probability",
+            "subclinical_probability",
+            "model_version",
+            "created_at",
+        ]
+        read_only_fields = [
+            "id",
+            "created_at",
+        ]
+class CowScanCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Scan
+        fields = [
+            "day",
+            "conductivity_raw_mScm",
+            "temperature_C",
+            "conductivity_temp_adjusted_mScm",
+            "milk_pH",
+            "somatic_cell_count",
+            "milk_yield_L",
+            "clotting",
+
+            "as7343_F1",
+            "as7343_F2",
+            "as7343_FZ",
+            "as7343_F3",
+            "as7343_F4",
+            "as7343_F5",
+            "as7343_FY",
+            "as7343_FXL",
+            "as7343_F6",
+            "as7343_F7",
+            "as7343_F8",
+            "as7343_NIR",
+            "as7343_VIS",
+            "as7343_FD",
+        ]
 class ScanSerializer(serializers.ModelSerializer):
+    prediction = PredictionSerializer(read_only=True)
 
     class Meta:
         model = Scan
@@ -40,11 +87,15 @@ class ScanSerializer(serializers.ModelSerializer):
             "as7343_FD",
 
             "timestamp",
+
+            # IMPORTANT
+            "prediction",
         ]
 
         read_only_fields = [
             "id",
             "timestamp",
+            "prediction",
         ]
 
     def validate_scan_number(self, value):
@@ -67,14 +118,12 @@ class ScanSerializer(serializers.ModelSerializer):
         cow = data.get("cow")
         scan_number = data.get("scan_number")
 
-        # Prevent duplicate scan numbers for the same cow
         if cow and scan_number:
             existing_scan = Scan.objects.filter(
                 cow=cow,
                 scan_number=scan_number
             )
 
-            # When updating an existing scan, exclude itself
             if self.instance:
                 existing_scan = existing_scan.exclude(
                     pk=self.instance.pk
@@ -91,43 +140,3 @@ class ScanSerializer(serializers.ModelSerializer):
         return data
 
 
-class PredictionSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Prediction
-        fields = [
-            "id",
-            "scan",
-            "risk_score",
-            "risk_label",
-            "model_version",
-            "created_at",
-        ]
-        read_only_fields = ["id", "created_at"]
-class CowScanCreateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Scan
-        fields = [
-            "day",
-            "conductivity_raw_mScm",
-            "temperature_C",
-            "conductivity_temp_adjusted_mScm",
-            "milk_pH",
-            "somatic_cell_count",
-            "milk_yield_L",
-            "clotting",
-
-            "as7343_F1",
-            "as7343_F2",
-            "as7343_FZ",
-            "as7343_F3",
-            "as7343_F4",
-            "as7343_F5",
-            "as7343_FY",
-            "as7343_FXL",
-            "as7343_F6",
-            "as7343_F7",
-            "as7343_F8",
-            "as7343_NIR",
-            "as7343_VIS",
-            "as7343_FD",
-        ]

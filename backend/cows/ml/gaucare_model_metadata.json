@@ -1,0 +1,33 @@
+{
+    "project": "GauCare",
+    "task": "Bovine Mastitis Risk Classification",
+    "model": "Random Forest",
+    "target": "risk_label",
+    "features": [
+        "conductivity_raw_mScm",
+        "temperature_C",
+        "conductivity_temp_adjusted_mScm",
+        "as7343_F1",
+        "as7343_F2",
+        "as7343_FZ",
+        "as7343_F3",
+        "as7343_F4",
+        "as7343_F5",
+        "as7343_FY",
+        "as7343_FXL",
+        "as7343_F6",
+        "as7343_F7",
+        "as7343_F8",
+        "as7343_NIR",
+        "as7343_VIS",
+        "as7343_FD",
+        "conductivity_deviation"
+    ],
+    "classes": [
+        "Clinical",
+        "Healthy",
+        "Subclinical"
+    ],
+    "validation_method": "Stratified 80/20 split from training data",
+    "primary_selection_metric": "Macro F1"
+}

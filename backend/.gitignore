@@ -16,3 +16,32 @@ venv/
 *.sqlite3
 # MastiSense dataset
 dataset/
+# Virtual environments
+venv/
+venv1/
+venv313/
+
+# Environment variables
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Django
+db.sqlite3
+# Virtual environments
+venv/
+
+venv313/
+.venv/
+
+# Python
+__pycache__/
+*.pyc
+
+# Django
+db.sqlite3
+
+# Environment variables
+.env
