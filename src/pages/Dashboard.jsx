@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { cowData } from '../data/mockCowData';
+import { CowFace } from '../components/CowIcon';
 import CowSelector from '../components/CowSelector';
 import RiskReportCard from '../components/RiskReportCard';
 import TrajectoryChart from '../components/TrajectoryChart';
@@ -57,8 +58,8 @@ export default function Dashboard() {
       <header className="dash-header">
         <div className="dash-header-inner">
           <Link to="/" className="dash-logo">
-            <span className="dash-logo-mark">MS</span>
-            <span className="dash-logo-text">MastiSense Edge</span>
+            <span className="dash-logo-mark"><CowFace size={16} /></span>
+            <span className="dash-logo-text">GauCare</span>
           </Link>
           <CowSelector
             cows={cowIds}

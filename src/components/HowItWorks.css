@@ -4,6 +4,7 @@
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   position: relative;
+  overflow: hidden;
 }
 .how-inner {
   max-width: 1120px;
@@ -26,16 +27,21 @@
   padding: 5px 14px;
   border-radius: var(--radius-pill);
   border: 1px solid var(--accent-border);
+  animation: badgePop 0.5s var(--ease-bounce) 0.2s both;
 }
+@keyframes badgePop { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
 .how-heading {
   font-size: var(--text-3xl);
   font-weight: 800;
   margin-bottom: var(--sp-4);
+  animation: fadeUp 0.6s var(--ease) 0.3s both;
 }
 .how-sub {
   font-size: var(--text-lg);
   color: var(--text-sec);
+  animation: fadeUp 0.6s var(--ease) 0.4s both;
 }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
 .how-steps {
   display: grid;
@@ -47,32 +53,29 @@
 .how-step {
   text-align: center;
   position: relative;
-  animation: stepIn 0.5s var(--ease) both;
+  animation: stepIn 0.6s var(--ease) both;
 }
+.how-step:hover .how-num { transform: scale(1.15) rotate(-5deg); }
 
 .how-num {
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--text-sm);
-  font-weight: 800;
   margin: 0 auto var(--sp-5);
   color: #fff;
   position: relative;
   z-index: 1;
-  transition: transform 0.3s var(--ease-bounce);
+  transition: transform 0.4s var(--ease-bounce), box-shadow 0.3s;
 }
-.how-step:hover .how-num { transform: scale(1.1) rotate(-3deg); }
+.how-num-teal { background: linear-gradient(135deg, #0d9488, #06b6d4); box-shadow: 0 4px 16px rgba(13, 148, 136, 0.35); }
+.how-num-blue { background: linear-gradient(135deg, #2563eb, #6366f1); box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35); }
+.how-num-violet { background: linear-gradient(135deg, #7c3aed, #a855f7); box-shadow: 0 4px 16px rgba(124, 58, 237, 0.35); }
+.how-num-rose { background: linear-gradient(135deg, #e11d48, #f43f5e); box-shadow: 0 4px 16px rgba(225, 29, 72, 0.35); }
 
-.how-num-teal { background: linear-gradient(135deg, #0d9488, #06b6d4); box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3); }
-.how-num-blue { background: linear-gradient(135deg, #2563eb, #6366f1); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
-.how-num-violet { background: linear-gradient(135deg, #7c3aed, #a855f7); box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3); }
-.how-num-rose { background: linear-gradient(135deg, #e11d48, #f43f5e); box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3); }
-
-.how-connector {
+.how-line {
   display: none;
 }
 
@@ -90,7 +93,7 @@
 }
 
 @keyframes stepIn {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
 }
 

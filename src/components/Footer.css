@@ -17,7 +17,11 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: var(--sp-1);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
+.footer-brand svg { -webkit-text-fill-color: initial; color: var(--accent); }
 .footer-credit {
   font-size: var(--text-xs);
   color: var(--text-muted);

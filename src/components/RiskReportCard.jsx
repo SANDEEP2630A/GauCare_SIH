@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { getRiskClass, getRiskLabel, getRecommendation, factorMeta } from '../data/mockCowData';
+import { CowFace } from './CowIcon';
 import './RiskReportCard.css';
 
 function animateNum(from, to, dur, cb) {
@@ -47,7 +48,7 @@ export default function RiskReportCard({ cowId, scan, animate }) {
     <div className={`rcard rc-${cls}`} ref={cardRef}>
       <div className="rcard-top">
         <span className="rcard-title">Mastitis Risk Report</span>
-        <span className="rcard-cow">{cowId}</span>
+        <span className="rcard-cow"><CowFace size={12} /> {cowId}</span>
       </div>
 
       <div className="rcard-body">
