@@ -6,7 +6,7 @@
         },
         "backend": {
             "root": "backend",
-            "entrypoint": "PROJECTNAME.wsgi:application"
+            "entrypoint": "mastisense.wsgi:application"
         }
     },
     "rewrites": [
